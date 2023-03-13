@@ -57,7 +57,7 @@
               ":created" => $created
             ))
           ){
-            header("Location: login.php?msg=".urlencode('Please verify your email address before logging in.'));
+            header("Location: login.php?");
           }
 
         }
@@ -127,6 +127,6 @@
     </div>
   </body>
   <!--Script-->
-  <script src="js/app.js">
-  </script>
+  <script src="js/app.js"></script>
+  <script src="js/password_match.js"></script>
 </html>

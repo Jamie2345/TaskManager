@@ -72,13 +72,6 @@
   </head>
   <body class="form-page-body">
     <div class="container">
-      <?php
-
-        if(isset($_REQUEST['msg'])) {
-          echo "<p class='alert alert-warning'>".$_REQUEST['msg']."</p>";
-        }
-
-      ?>
       <div class="title">Login</div>
       <div class="content">
         <form class="login-form" id="login-form" method="POST" action="login.php">

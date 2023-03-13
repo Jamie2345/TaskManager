@@ -58,12 +58,12 @@
           ?>
       
           <p class="logout-text"><a href="logout.php">Logout</a></p>
+          <ul class="tasks-instructions">
+            <li id="done-task-instruction">Completed</li>
+            <li id="todo-instruction">Task To Do</li>
+            <li id="edit-or-delete-instruction">Edit Or Delete</li>
+          </ul>
           <div class="tasks-container">
-            <ul class="tasks-instructions">
-              <li id="done-task-instruction">Completed</li>
-              <li id="todo-instruction">Task To Do</li>
-              <li id="edit-or-delete-instruction">Edit Or Delete</li>
-            </ul>
             <?php
               include("connection.php");
 
@@ -76,9 +76,13 @@
 
               $next_task_id = 0;
 
+              function pkcs7_unpad($data) {
+                  return substr($data, 0, -ord($data[strlen($data) - 1]));
+              }
+
               while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
                 $next_task_id ++;
-                $task = $row['task'];
+                $enc_task = $row['task'];
                 $task_id = $row['task_id'];
                 $checked = $row['completed'];
                 $tick_text = "";
@@ -86,6 +90,14 @@
                 if ($checked) {
                   $tick_text = "checked";
                 }
+
+                $task = pkcs7_unpad(openssl_decrypt(
+                  $enc_task,
+                  'AES-256-CBC',
+                  'h72NHmPSDGCy96gubble',
+                  0,
+                  1234567890123456
+              ));
                 
                 echo "<div class='task-container'><div class='done-button-container'><input type='checkbox' id='done-checkbox' $tick_text onclick=\"taskStatus(this, '$task_id')\"></div><div class='task-text' data-task-text='$task'>".$task."</div><div class='task-management-buttons-container'><button><i class='ri-pencil-fill' id='edit-btn' onclick=\"editTaskButton('$task', '$task_id')\"></i></button><button><i class='ri-delete-bin-7-fill' id='delete-btn' onclick=\"deleteTaskButton('$task', '$task_id')\"></i></button></div></div>";
               }

@@ -58,6 +58,9 @@ function deleteTask(task_id) {
 }
 
 function deleteTaskButton(task, task_id) {  
+  const delete_conf_btn = document.querySelector("#delete_conf_btn")
+  delete_conf_btn.setAttribute("task_id", task_id)
+
   var body = document.getElementById("tasks-page");
   var blur = document.getElementById("blur");
   var popup = document.getElementById("task-delete-popup");
@@ -85,9 +88,9 @@ function deleteTaskButton(task, task_id) {
   document.querySelector("#task-delete-close-button").addEventListener("click", function() {
     closePopup();
   });
-
-  document.querySelector("#delete_conf_btn").addEventListener("click", function() {
-
+  
+  delete_conf_btn.addEventListener("click", function() {
+    let task_id = delete_conf_btn.getAttribute("task_id")
     deleteTask(task_id);
     closePopup();
     reloadPage(); 
@@ -283,3 +286,8 @@ function deleteAllTasks() {
   });
 
 }
+
+
+// code to remove the passwords don't match text when user types again
+
+

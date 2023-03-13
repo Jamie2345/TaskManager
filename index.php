@@ -16,29 +16,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="css/style.css">
     <title>Gubble Task Managing</title>
+    <link rel="icon" type="image/x-icon" href="images/gubble_logo.png">
   </head>
   <body>
-    <main>
-      <section>
-        <div class="introduction-container">
-          <div class="intro">
-            <h1>Gubble helps teams move work forward.</h1>
-            <p>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all.</p>
-            <div class="signup-login">
-              <a href="register.php">
-                <button class="btn-hover color-3">Sign Up</button>
-              </a>
-              <a href="login.php">
-                <button class="btn-hover color-1">Log In</button>
-              </a>
-            </div>
-          </div>
-          <div class="image-container">
-            <img src="images/TaskManaging.png">
-          </div>
+    <div class="introduction-container">
+      <div class="intro">
+        <h1>Gubble helps teams move work forward.</h1>
+        <p>Collaborate, manage projects, and reach new productivity peaks. From high rises to the home office, the way your team works is unique—accomplish it all.</p>
+        <div class="signup-login">
+          <a href="register.php">
+            <button class="btn-hover color-3">Sign Up</button>
+          </a>
+          <a href="login.php">
+            <button class="btn-hover color-1">Log In</button>
+          </a>
         </div>
-      </section>
-    </main>
+      </div>
+      <div class="image-container">
+        <img src="images/TaskManaging.png">
+      </div>
+    </div>
   </body>
   <!--Script-->
   <script src="js/app.js">
